@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIMELINE</title>
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+
+  <!-- Date picker -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( ".datepicker" ).datepicker();
+  } );
+  </script>
+
+  <script src="static/js/add_more_column.js"></script>
+  <script src="static/js/hide_element_after_click.js"></script>
+
+</head>
+
+<body>
+  <div class="margin" id="tablecontainer">
+    <div class="container-fluid">
+      <div class="container">
+      <div class="row width-max">
+        <div class="col-6 d-flex flex-row-reverse m-0 p-0">
+          <img src="static/images/male.png" alt="" class="rounded-circle main-bg ">
+        </div>
+        <div class="col-6 align-self-center m-0 p-0" style="margin-left: -25px !important;">
+          <input type="text" class="form-control w-75 main-bg border-ra" value="ຊື່: ">
+          <input type="text" class="form-control w-75 main-bg" value="ອາຊີບ: ">
+          <input type="text" class="form-control w-75 main-bg border-ra" value="ກໍລະນີທີ: ">
+        </div>
+      
+      </div>
+      </div>
+      
+      <div class="container">
+        <div class="timeline mt-1">
+          <div class="timeline-body accordion-body">
+            <div class="timeline-item">
+              <p class="time">
+              <form autocomplete="off">
+                <div class="flex-row d-flex ">
+                  <div class="w-30">
+                    <div class="position-relative" id="hide_after">
+                      <div class="position-absolute top-100 start-100 translate-middle">
+                        <i
+                          class="far fa-plus-square text-secondary mt-4 mb-2 icon-mr"
+                          id="addmoreRows"
+                        >Add</i>
+                      </div>
+                    </div>
+                    <label class="margin-right-ab font-lao">ວັນທີ :</label>
+                    <div class="input-group input-daterange">
+                      <input type="text" class="datepicker" placeholder="DATE">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              </p>
+              <div class="content mt-0">
+                <textarea placeholder="ພິມບ່ອນນີ້..." rows="4" cols="60" class="text-area-type"
+                  onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>        
+
+        <timline_add_row></timline_add_row>
+
+        <!-- container end here -->
+      </div>
+    </div>
+  </div>
+
+  
+  <button id="savePhoto" class="btn btn-primary main-bg d-block w-25 p-2 mx-auto mb-5 btn_hide"> SAVE</button>
+
+  <!-- This js to make auto heigh when type -->
+  <script type="text/javascript">
+    function auto_grow(element) {
+      element.style.height = "5px";
+      element.style.height = (element.scrollHeight) + "px";
+    }
+  </script>
+  
+</body>
+
+
+<!--  TO save as photo -->
+<script>
+  $(".btn_hide").click(function(){
+    $("#hide_after").hide();
+  });
+  function downloadtable() {
+    var node = document.getElementById('tablecontainer');
+    domtoimage.toPng(node)
+      .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        downloadURI(dataUrl, "records.png")
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+  }
+  function downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    delete link;
+  }
+</script>
+
+
+</html>
