@@ -11,12 +11,12 @@
     font-family: phetsarath_ot !important;
   }
   body {
-    background-color: #252827 !important;
+    background-color: rgb(17, 5, 27) !important;
     color: white !important;
     letter-spacing: 2px;
   }
   .container-fluid {
-    background-color: #252827 !important;
+    background-color: rgba(17, 5, 27, 0.76) !important;
     color: white !important;
     margin: 20px !important;
   }
@@ -39,6 +39,7 @@
   .timeline {
     max-width: 900px;
     margin: 0 auto;
+    margin-bottom: 0px !important;
     /* background-color: white; */
   }
   .timeline .timeline-body {
@@ -69,7 +70,7 @@
     background-color: #dde6e1;
     position: absolute;
     left: -12px;
-    top: 46px;
+    top: 40px;
     z-index: 9;
   }
   .timeline .timeline-body .timeline-item .time {
@@ -80,8 +81,8 @@
     font-size: 13px;
   }
   .timeline .timeline-body .timeline-item .content {
-    margin: 40px;
-    padding-bottom: 40px;
+    margin-left: 40px;
+    padding-bottom: 5px;
     border-bottom: 1px dashed #555;
   }
   .timeline .timeline-body .timeline-item .content .title {

@@ -1,6 +1,5 @@
-alert("Hello")
 $(document).ready(function () {
-    $("#addmoreRows").click(function () {
+    $(".addmoreRows").click(function () {
         $("timline_add_row").append(
             '\
             <div class="timeline ">\
@@ -20,7 +19,8 @@ $(document).ready(function () {
                 </p>\
                 <div class="content mt-0">\
                   <textarea placeholder="ພິມບ່ອນນີ້..." rows="4" cols="60" class="text-area-type"\
-                    onkeypress="auto_grow(this);" onkeyup="auto_grow(this);"></textarea>\
+                    onkeypress="auto_grow(this);" onkeyup="auto_grow(this);">\
+                  </textarea>\
                 </div>\
               </div>\
             </div>\
