@@ -1,11 +1,8 @@
 # import module and library 
-from flask import Flask, render_template, request
-from werkzeug.serving import run_simple
-import webbrowser
-
+from flask import Flask, render_template
+ 
 # Declare
 app = Flask(__name__)
-
 
 @app.route("/")
 def home():
@@ -13,7 +10,7 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
     # app.config["TEMPLATES_AUTO_RELOAD"] = True
     # port_number = 2020
     # webbrowser.open(f'http://127.0.0.1:{port_number}')
